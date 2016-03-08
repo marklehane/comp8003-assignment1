@@ -28,6 +28,5 @@ build/Release
 node_modules
 
 data/
-data/
 data/*
 data/*.*
