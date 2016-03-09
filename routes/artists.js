@@ -14,19 +14,13 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/:id', function(req, res, next) {
-
-	res.render('artistdetails', { title: 'Artist Details' });
-
-});
-
 router.get('/:id', function(req, res) {
 
 	var db = req.db;
     var collection = db.get('artists');
     collection.find({ 'id': parseInt(req.params.id) },{ limit: 1 },function(e,docs) {
 
-			res.json(docs);
+			res.render('artistdetails', { "results" : docs });
 
     });
 

@@ -4,12 +4,19 @@ block content
 
     #wrapper
 
-        h2 List of Artworks
-        #artworkList
+        h2 List of Artists
+        #artistList
             table.table.table-striped
                 thead
                     th Artist
                     th Title
                     th Image
-                    th More Info
+                    th More
                 tbody
+                  each result in results
+                    tr
+                      td #{result.all_artists}
+                      td #{result.title}
+                      td #{result.birthYear}
+                      td #[img(src="#{result.thumbnailUrl}")]
+                      td #[a(href="/artworks/#{result.id}") More]

@@ -2,16 +2,21 @@ extends layout
 
 block content
 
-    // Wrapper
-    #wrapper
+  #wrapper
 
-        // ARTIST LIST
-        #artistDetails
-            table
-                thead
-                    th Name
-                    th Title
-                tbody
-        // /ARTIST LIST
-
-    // /WRAPPER
+    h2 List of Artists
+    #artistList
+        table.table.table-striped
+            thead
+                th Name
+                th Gender
+                th Born
+                th Total Works
+                th More
+            tbody
+              each result in results
+                tr
+                  td #{result.fc}
+                  td #{result.gender}
+                  td #{result.birthYear}
+                  td #{result.totalWorks}
