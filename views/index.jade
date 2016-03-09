@@ -15,9 +15,9 @@ block content
 				h2 Random Artist
 				each item in artist
 					p
-						| #{item.fc}
+						| #{item.fc} #{item.gender}
 					p
-						a.btn.btn-default(href='#', role='button') More Info »
+						a.btn.btn-default(href='/artists/#{item.id}', role='button') More Info »
 			.col-md-6
 				h2 Random Artwork
 				p
