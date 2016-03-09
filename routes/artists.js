@@ -1,19 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/artistlist', function(req, res) {
-
-		var rand = Math.floor((Math.random() * 2500) + 1);
-    var db = req.db;
-    var collection = db.get('artists');
-    collection.find({},{ skip: rand, limit: 20 },function(e,docs) {
-
-			res.json(docs);
-
-    });
-
-});
-
 router.get('/', function(req, res, next) {
 
 	var rand = Math.floor((Math.random() * 2500) + 1);
@@ -21,15 +8,9 @@ router.get('/', function(req, res, next) {
 	var collection = db.get('artists');
 	collection.find({},{ skip: rand, limit: 20 },function(e,docs) {
 
-		// res.json(docs);
-		// res.render('artists', { title: 'Artist List', "results":docs });
-
-		res.render('artists', {
-            "results" : docs
-        });
+		res.render('artists', { "results" : docs });
 
 	});
-
 
 });
 

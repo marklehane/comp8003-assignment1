@@ -14,10 +14,6 @@ var db = monk('localhost:27017/tate2')
 var routes = require('./routes/index');
 var artists = require('./routes/artists');
 var artworks = require('./routes/artworks');
-var viewArtists = require('./routes/viewartists');
-var viewArtworks = require('./routes/viewartworks');
-var artistDetails = require('./routes/artistdetails');
-var artworkDetails = require('./routes/artworkdetails');
 
 var app = express();
 
@@ -41,10 +37,6 @@ app.use(function(req,res,next){
 app.use('/', routes);
 app.use('/artists', artists);
 app.use('/artworks', artworks);
-app.use('/viewartists', viewArtists);
-app.use('/viewartworks', viewArtworks);
-app.use('/artistdetails', artistDetails);
-app.use('/artworkdetails', artworkDetails);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
