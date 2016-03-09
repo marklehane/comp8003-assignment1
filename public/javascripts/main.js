@@ -2,7 +2,7 @@ var artistList = [];
 
 $(document).ready(function() {
 
-	populateArtistTable();
+	// populateArtistTable();
 	populateArtworkTable();
 	populateArtistDetails();
 	populateArtworkDetails();
@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 function populateArtistTable() {
-	
+
 	var tableContent = "";
 
 	$.getJSON('/artists/artistlist', function(data) {
@@ -33,7 +33,7 @@ function populateArtistTable() {
 };
 
 function populateArtworkTable() {
-	
+
 	var tableContent = "";
 
 	$.getJSON('/artworks/artworklist', function(data) {

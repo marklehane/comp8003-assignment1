@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
 
-	res.render('artists', { title: 'Artist List' });
+	res.render('artists', { title: 'Artist List', results:res });
 
 });
 

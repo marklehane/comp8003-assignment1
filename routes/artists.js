@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/artistlist', function(req, res) {
 
-	var rand = Math.floor((Math.random() * 2500) + 1);
+		var rand = Math.floor((Math.random() * 2500) + 1);
     var db = req.db;
     var collection = db.get('artists');
     collection.find({},{ skip: rand, limit: 20 },function(e,docs) {
@@ -11,6 +11,31 @@ router.get('/artistlist', function(req, res) {
 			res.json(docs);
 
     });
+
+});
+
+router.get('/', function(req, res, next) {
+
+	var rand = Math.floor((Math.random() * 2500) + 1);
+	var db = req.db;
+	var collection = db.get('artists');
+	collection.find({},{ skip: rand, limit: 20 },function(e,docs) {
+
+		// res.json(docs);
+		// res.render('artists', { title: 'Artist List', "results":docs });
+
+		res.render('artists', {
+            "results" : docs
+        });
+
+	});
+
+
+});
+
+router.get('/:id', function(req, res, next) {
+
+	res.render('artistdetails', { title: 'Artist Details' });
 
 });
 

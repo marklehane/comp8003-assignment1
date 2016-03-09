@@ -8,10 +8,15 @@ block content
         #artistList
             table.table.table-striped
                 thead
-                  //each result in results
                     th Name
                     th Gender
                     th Born
                     th Total Works
                     th More
                 tbody
+                  each result in results
+                    tr
+                      td #{result.fc}
+                      td #{result.gender}
+                      td #{result.birthYear}
+                      td #{result.totalWorks}
