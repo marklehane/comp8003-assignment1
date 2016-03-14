@@ -10,12 +10,17 @@ block content
 			p
 
 	.container
-		h2 Random Artworks
+		h2 Random Artworks (Click image to learn more)
 		hr
 		.row
 			each item in artwork
 				.col-md-3
-					p
-						| #[img(src="#{item.thumbnailUrl}")]
-					p
+					if item.thumbnailUrl
+						p
+							|#[img(src="#{item.thumbnailUrl}")]
+						p
 						a.btn.btn-default(href="/artworks/#{item.id}", role='button') More Info »
+					else
+						p
+							| No Image Available
+						p
