@@ -14,16 +14,4 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.post('/:id', function(req, res) {
-
-	var query = req.body.query;
-	var collection = db.get('artists');
-	collection.find({},{},function(e,docs) {
-
-		res.render('index', { "artwork" : docs });
-
-	});
-
-});
-
 module.exports = router;
