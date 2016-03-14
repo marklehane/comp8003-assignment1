@@ -10,17 +10,12 @@ block content
 			p
 
 	.container
+		h2 Random Artworks
+		hr
 		.row
-			.col-md-6
-				h2 Random Artist
-				each item in artist
+			each item in artwork
+				.col-md-3
 					p
-						| #{item.fc} #{item.gender}
+						| #[img(src="#{item.thumbnailUrl}")]
 					p
-						a.btn.btn-default(href='/artists/#{item.id}', role='button') More Info »
-			.col-md-6
-				h2 Random Artwork
-				p
-					| Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-				p
-					a.btn.btn-default(href='#', role='button') More Info »
+						a.btn.btn-default(href="/artworks/#{item.id}", role='button') More Info »
