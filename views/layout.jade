@@ -4,7 +4,6 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
-    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
     script(src='/javascripts/main.js')
@@ -30,6 +29,11 @@ html
               a(href='/artists') Artists
             li
               a(href='/artworks') Artworks
+          form.navbar-form.navbar-right(role='form')
+            .form-group
+              input.form-control(type='text', name='query', placeholder='Search')
+            button.btn.btn-success(type='submit') Search
+
     hr
     footer
       p &copy; Tate Gallery 2016
