@@ -19,7 +19,9 @@ router.get('/:id', function(req, res) {
 	var db = req.db;
     var collection = db.get('artworks');
     collection.find({ 'id': parseInt(req.params.id) },{ limit: 1 },function(e,docs){
-        res.json(docs);
+
+			res.render('artworkdetails', { "results" : docs });
+
     });
 
 });

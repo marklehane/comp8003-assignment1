@@ -1,22 +1,80 @@
 extends layout
-
 block content
+  each result in results
+    #wrapper
+      if result.gender == 'Female'
+        h2 Female Artist - #{result.fc}
+        #artistList
+            table.table.table-striped
+                thead
+                    th Name
+                    th Gender
+                    th Born
+                    th Total Works
+                    th Born In
+                    th Died In
+                tbody
+                  tr
+                    td #{result.fc}
+                    td #{result.gender}
+                    td #{result.birthYear}
+                    td #{result.totalWorks}
+                    if result.birth.place
+                      if result.birth.place.name
+                        td #{result.birth.place.name}
+                      else
+                        td N/A
+                    else
+                      td N/A
+                    if result.death
+                      if result.death.place
+                        if result.death.place.name
+                          td #{result.death.place.name}
+                        else
+                          td N/A
+                      else
+                        td N/A
+                    else
+                      td N/A
+                      
+                      a.btn.btn-default(href="#{result.url}", role='button') More Info
+        hr
+        h2 Movements
+        each val in result.movements
+          if val.era
+            #{val.era.name}
+          else
+            No Movements
+            
+        hr
+        h2 Artworks
 
-  #wrapper
+      else
+        h2 Male Artist - #{result.fc}
+        .container
+          .row
+            .col-md-4
+              h3 Artist Info
+              p(style='white-space:pre;')
+                | <b>Name</b>: #{result.fc}
+                | <b>Gender</b>: #{result.gender}
+                | <b>Born</b>: #{result.birthYear}
+                | <b>Total Works</b>: #{result.totalWorks}
+                | <b>Born In</b>:
+                if result.death
+                  if result.death.place
+                    if result.death.place.name
+                      |#{result.death.place.name} <br/>
+                | <b>Died In</b>: 
+                if result.birth
+                  if result.birth.place
+                    if result.birth.place.name
+                      |#{result.birth.place.name}
+              p
+            .col-md-4
+              h3 Artist Movements
+              each val in result.movements
+                #{val.era.name}
 
-    h2 List of Artists
-    #artistList
-        table.table.table-striped
-            thead
-                th Name
-                th Gender
-                th Born
-                th Total Works
-                th More
-            tbody
-              each result in results
-                tr
-                  td #{result.fc}
-                  td #{result.gender}
-                  td #{result.birthYear}
-                  td #{result.totalWorks}
+            .col-md-4
+              h3 Artist Artworks

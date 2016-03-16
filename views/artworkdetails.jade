@@ -1,19 +1,42 @@
 extends layout
 
 block content
-
-    // Wrapper
+  each result in results
     #wrapper
-
-        // ARTWORK Details
-        h2 Artwork Details
+      if result.acquisitionYear <= '1900'
+        h2 Artwork Details - Before 1900
+        h3 <b>Artwork Name:</b> #{result.title}
         #artworkDetails
-            table
-                thead
-                    th Artist
-                    th Classification
-                    th Image
-                tbody
-        // /ARTWORK Details
-
-    // /WRAPPER
+          #[img(src="#{result.thumbnailUrl}")]
+          table.table.table-striped
+            thead
+                th Artist
+                th Classification
+                th Medium
+                th Acquisition Year
+            tbody
+              tr
+                td #{result.all_artists}
+                td #{result.classification}
+                td #{result.medium}
+                td #{result.acquisitionYear}
+      else
+        h2 Artwork Details - After 1900
+        h3 <b>Artwork Name:</b> #{result.title}
+        .container
+          .row
+            .col-md-4
+              h3 Artwork Image
+                p(style='white-space:pre;')
+                | #[img(src="#{result.thumbnailUrl}")]
+                p
+            .col-md-4
+              h3 Artwork Details
+              h4
+                p(style='white-space:pre;')
+                | <b>Artist:</b> #{result.all_artists} <br/>
+                | <b>Classification:</b> #{result.classification} <br/>
+                | <b>Medium:</b> #{result.medium} <br/>
+                | <b>Acquisition Year:</b> #{result.acquisitionYear}
+                p
+      
